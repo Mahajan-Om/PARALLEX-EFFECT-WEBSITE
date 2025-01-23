@@ -1,0 +1,111 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(external.ttf);
+}
+
+
+#Wrapper{
+    height: 100vh;    /* hamara sara code wrapper ke ander chahiye to wrapper ki height puri viewport jitni hi honi chahiye */
+    overflow-x: hidden;  /*to avoid scrolling along x direction */
+    overflow-y: auto;
+    perspective: 10px;   /*kuch bhi lelo 1000px just to active z axis*/
+}
+
+.conatiner{
+    
+    
+    position:relative;    /* conatiner ke ander images hai jise overlap krna hai i.e position aboslute set krni hai so conatiner ki position relative krdi i.e non static so that it can be the nerrest positon ancestor of images*/
+    display: flex;      /* to make conatiner flex so that we can use justify content align items etc*/
+    justify-content: center;
+    align-items: center;  /* to center the text we used justify content and align items */
+    height: 100%;  /*wrapper div ka full height use hoga i.e 100 percent of wrapper*/
+    transform-style: preserve-3d;  /* it is used to perserved behaviour i.e humne perspective on kiya but 3d me work krne ke liye transform style preserve krna padega nhi to 2d me hi behave karega aur dono images foreground aur background ek dusre pe chipak jayegi*/
+
+    z-index:-1;  /* it is used to tell which layer to be placed on which layer after overlapping  i.e inshort layering krne ke liye default value zero hoti hai to agr zero se jyada value di to chhup jayega agr kam di to nhi chupega */
+
+}
+
+.background{
+    transform: translateZ(-40px) scale(5);
+}
+.foreground{
+    transform: translateZ(-20px) scale(3);
+}
+.background,.foreground{   /* pehle background phir foreground */
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    z-index: -1; /* yha bhi positioning di hai here aboslute to yha bhi z-index dedo */
+    object-fit: cover;   /* object is properly fir in conatiner , object fit property is used to specify how an img or video to be resized to fits in its conatiner i.e bina object fit image shrink rehti hai but object fit krne ke bad proper fir ho jati hai conatiner ke ander */
+}
+
+h1{
+    /* desginer willl give all values for front family and type etc */
+    position: absolute;
+    font-family: myFont;
+    top:5rem;
+    font-size: 10rem;
+    letter-spacing: 4px;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.3);
+
+}
+
+section{
+    background-color: rgb(45,45,45);
+    color: white;
+    padding: 5rem 0;
+
+}
+
+.secheading{
+    font-size: 5rem;
+    padding : 0 10rem;
+}
+
+text{
+    font-size: 1rem;
+    padding: 0 10rem;
+    margin:5rem 0;
+    
+    
+}
+.bg{
+    position: relative; /* background image ke upr texti.e h2  overlap kr rha hai to text ko absolute denge aur uski nearest anchestre i.e bg ko relative */
+    width: 100%;  /* puri image chahiye */
+    background-attachment: fixed;  /* background image fixed hai scroll krne pr bhi */
+    height:500px;
+    background-position: center; /* background icon ko center me lane ke liye */
+    background-size: cover;   /* conatiner me proper fit krne ke liye object ko */
+}
+
+.desc{
+    position: absolute;
+    background-color: white;
+    padding: 0.5rem 2.5rem;
+    top:50%;
+    left:50%;
+    transform: translateX(-50%) translateX(-50%);
+    color: black;
+    font-size:3.5rem;
+    font-weight:600;
+
+}
+.bg1{
+   background-image: url(sport-1.jpg); 
+}
+
+.bg2{
+    background-image: url(sport-2.jpg);
+}
+
+.bg3{
+    background-image: url(sport-3.jpg);
+}
